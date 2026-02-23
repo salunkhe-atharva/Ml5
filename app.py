@@ -3,7 +3,7 @@ import numpy as np
 import math
 import streamlit as st
 
-# --- ID3 Logic ---
+
 class ID3Classifier:
     def __init__(self):
         self.tree = None
@@ -54,7 +54,7 @@ class ID3Classifier:
         else:
             return "Unknown"
 
-# --- Streamlit UI ---
+
 def main():
     st.set_page_config(page_title="ID3 Weather Predictor", page_icon="🎾")
     st.title("🎾 ID3 Decision Tree: Play Tennis?")
@@ -74,7 +74,7 @@ def main():
     })
     st.dataframe(data, use_container_width=True)
 
-    # 2. Training Section
+    
     clf = ID3Classifier()
     features = ['Outlook', 'Humidity']
     clf.fit(data, 'PlayTennis', features)
@@ -84,7 +84,7 @@ def main():
     
     
 
-    # 3. Interactive Prediction Section
+    
     st.divider()
     st.subheader("Make a New Prediction")
     
@@ -97,7 +97,7 @@ def main():
     sample = {'Outlook': ui_outlook, 'Humidity': ui_humidity}
     result = clf.predict(clf.tree, sample)
 
-    # Display Result
+    
     if result == "Yes":
         st.balloons()
         st.success(f"### Prediction: You should play tennis! ✅")
